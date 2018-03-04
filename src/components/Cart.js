@@ -11,10 +11,13 @@ export default class Cart extends Component {
   }
 
   render() {
+    const { cartItems } = this.props;
+    let collectionOfItems = [];
+    collectionOfItems = cartItems.map((item, index) => <CartItem index={index} item={item} />);
     return (
       <div className="Cart">
         <h3>Cart</h3>
-        <CartItem />
+        {collectionOfItems}
       </div>
     );
   }

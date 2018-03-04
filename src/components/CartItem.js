@@ -9,10 +9,12 @@ export default class CartItem extends Component {
   }
 
   render() {
+    const { index, item } = this.props;
     return (
       <div className="CartItem">
-        <p>1. Dark Side of the Moon</p>
-        <p>$220</p>
+        <p>{`${index + 1}.`}</p>
+        <p id="cartItemTitle">{`${item.title}`}</p>
+        <p>&#2547;{` ${item.price}`}</p>
       </div>
     );
   }

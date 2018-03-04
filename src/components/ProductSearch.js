@@ -50,7 +50,10 @@ export default class ProductSearch extends Component {
     return (
       <div className="ProductSearch">
         <SearchBar getSearchString={this.getSearchString} />
-        <ProductShowcase listOfProducts={this.state.listOfProducts} />
+        <ProductShowcase
+          listOfProducts={this.state.listOfProducts}
+          addToCart={this.props.addToCart}
+        />
       </div>
     );
   }

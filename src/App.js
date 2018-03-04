@@ -8,14 +8,23 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      cartItems: [],
+    };
   }
+
+  addToCart = item => {
+    const { cartItems } = this.state;
+    cartItems.push(item);
+    this.setState({ cartItems });
+    console.log(cartItems);
+  };
 
   render() {
     return (
       <div className="App">
-        <ProductSearch />
-        <Cart />
+        <ProductSearch addToCart={this.addToCart} />
+        <Cart cartItems={this.state.cartItems} />
       </div>
     );
   }

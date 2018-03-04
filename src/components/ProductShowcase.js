@@ -14,7 +14,9 @@ export default class ProductShowcase extends Component {
     let collectionOfProducts = [];
     const { listOfProducts } = this.props;
     if (listOfProducts) {
-      collectionOfProducts = listOfProducts.map(item => <Product key={item.id} product={item} />);
+      collectionOfProducts = listOfProducts.map(item => (
+        <Product key={item.id} product={item} addToCart={this.props.addToCart} />
+      ));
     }
     return (
       <div className="ProductShowcase">

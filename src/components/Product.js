@@ -8,6 +8,11 @@ export default class Product extends Component {
     this.state = {};
   }
 
+  handleAddCart = product => {
+    this.props.addToCart(product);
+    console.log('+ Cart Clicked!', product);
+  };
+
   render() {
     const { product } = this.props;
     return (
@@ -19,11 +24,11 @@ export default class Product extends Component {
           height="220"
           width="220"
         />
-        <p id="title">{product.title}</p>
-        <button id="button" type="button">
+        {product.title}
+        <button id="button" type="button" onClick={() => this.handleAddCart(product)}>
           + Cart
         </button>
-        <div className="Price">{product.price} BDT</div>
+        <div className="Price">&#2547; {product.price}</div>
       </div>
     );
   }
