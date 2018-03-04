@@ -8,13 +8,20 @@ export default class ProductSearch extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      searchString: undefined,
+    };
   }
+
+  getSearchString = value => {
+    console.log('This is the search string: ', value);
+    this.setState({ searchString: value });
+  };
 
   render() {
     return (
       <div className="ProductSearch">
-        <SearchBar />
+        <SearchBar getSearchString={this.getSearchString} />
         <ProductShowcase />
       </div>
     );
