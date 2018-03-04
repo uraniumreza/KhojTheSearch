@@ -10,19 +10,46 @@ export default class ProductSearch extends Component {
 
     this.state = {
       searchString: undefined,
+      listOfProducts: undefined,
     };
   }
 
   getSearchString = value => {
     console.log('This is the search string: ', value);
-    this.setState({ searchString: value });
+    this.setState({ searchString: value }, this.searchProduct);
+  };
+
+  searchProduct = () => {
+    fetch(
+      `http://es.backpackbang.com:9200/products/amazon/_search?q=title:${this.state.searchString}`,
+    )
+      .then(response => response.json())
+      .then(myJson => {
+        console.log(myJson);
+        this.refactorProducts(myJson.hits.hits);
+      });
+  };
+
+  refactorProducts = searchedProducts => {
+    const listOfProducts = [];
+    searchedProducts.map(item => {
+      const product = {
+        id: item._id,
+        title: item._source.title,
+        images: item._source.images,
+        price: item._source.salePrice,
+      };
+      listOfProducts.push(product);
+    });
+    this.setState({ listOfProducts });
+    console.log(listOfProducts);
   };
 
   render() {
     return (
       <div className="ProductSearch">
         <SearchBar getSearchString={this.getSearchString} />
-        <ProductShowcase />
+        <ProductShowcase listOfProducts={this.state.listOfProducts} />
       </div>
     );
   }
