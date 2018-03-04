@@ -12,9 +12,10 @@ export default class ProductShowcase extends Component {
 
   render() {
     let collectionOfProducts = [];
-    const List = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5];
-    collectionOfProducts = List.map(() => <Product />);
-
+    const { listOfProducts } = this.props;
+    if (listOfProducts) {
+      collectionOfProducts = listOfProducts.map(item => <Product key={item.id} product={item} />);
+    }
     return (
       <div className="ProductShowcase">
         {/* <h1>What&apos;ll you buy today?</h1> */}

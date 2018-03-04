@@ -36,13 +36,14 @@ export default class ProductSearch extends Component {
       const product = {
         id: item._id,
         title: item._source.title,
+        description: item._source.description,
         images: item._source.images,
         price: item._source.salePrice,
       };
       listOfProducts.push(product);
     });
-    this.setState({ listOfProducts });
     console.log(listOfProducts);
+    this.setState({ listOfProducts });
   };
 
   render() {

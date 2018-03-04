@@ -9,20 +9,21 @@ export default class Product extends Component {
   }
 
   render() {
+    const { product } = this.props;
     return (
       <div className="Product">
         <img
           id="image"
-          src="https://upload.wikimedia.org/wikipedia/commons/c/c6/Sierpinski_square.jpg"
-          alt="Dark Side of the Moon"
+          src={product.images[0]}
+          alt={product.description}
           height="220"
           width="220"
         />
-        Dark Side of The Moon
+        <p id="title">{product.title}</p>
         <button id="button" type="button">
           + Cart
         </button>
-        <div className="Price">220 BDT</div>
+        <div className="Price">{product.price} BDT</div>
       </div>
     );
   }
