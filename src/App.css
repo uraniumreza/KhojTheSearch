@@ -1,28 +1,78 @@
 .App {
+  display: flex;
+  flex-direction: row;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.Cart {
+  height: 100vh;
+  width: 25%;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.CartItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.ProductSearch {
+  height: 100vh;
+  width: 75%;
+  border-right: 3px solid black;
+}
+
+.ProductShowcase {
+  display: flex;
+  height: 78vh;
+  flex-wrap: wrap;
+  overflow: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.Product {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px;
+  position: relative;
+}
+
+.Price {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  background-color: black;
   color: white;
+  padding: 5px;
 }
 
-.App-title {
-  font-size: 1.5em;
+.SearchBar {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
-.App-intro {
-  font-size: large;
+#button {
+  width: 110px;
+  height: 35px;
+  box-shadow: 0 8px 12px 0 rgba(0,0,0,0.1), 0 6px 20px 0 rgba(0,0,0,0.09);
+  margin-top: 15px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+#image {
+  padding-bottom: 7px;
+}
+
+#searchBar {
+  width: 60%;
+  height: 30px;
+}
+
+#searchButton {
+  width: 110px;
+  height: 36px;
+  box-shadow: 0 8px 12px 0 rgba(0,0,0,0.1), 0 6px 20px 0 rgba(0,0,0,0.09);
 }
