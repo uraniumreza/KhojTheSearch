@@ -9,6 +9,7 @@ export default class ProductSearch extends Component {
     super(props);
 
     this.state = {
+      searching: undefined,
       searchString: undefined,
       listOfProducts: undefined,
     };
@@ -16,7 +17,7 @@ export default class ProductSearch extends Component {
 
   getSearchString = value => {
     console.log('This is the search string: ', value);
-    this.setState({ searchString: value }, this.searchProduct);
+    this.setState({ searchString: value, searching: true }, this.searchProduct);
   };
 
   searchProduct = () => {
@@ -43,7 +44,7 @@ export default class ProductSearch extends Component {
       listOfProducts.push(product);
     });
     console.log(listOfProducts);
-    this.setState({ listOfProducts });
+    this.setState({ listOfProducts, searching: false });
   };
 
   render() {
@@ -51,6 +52,7 @@ export default class ProductSearch extends Component {
       <div className="ProductSearch">
         <SearchBar getSearchString={this.getSearchString} />
         <ProductShowcase
+          searching={this.state.searching}
           listOfProducts={this.state.listOfProducts}
           addToCart={this.props.addToCart}
         />
