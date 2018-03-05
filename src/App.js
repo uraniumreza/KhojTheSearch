@@ -20,11 +20,16 @@ class App extends Component {
     console.log(cartItems);
   };
 
+  clearCart = () => {
+    console.log('Clear Cart Pressed!');
+    this.setState({ cartItems: [] });
+  };
+
   render() {
     return (
       <div className="App">
         <ProductSearch addToCart={this.addToCart} />
-        <Cart cartItems={this.state.cartItems} />
+        <Cart cartItems={this.state.cartItems} clearCart={this.clearCart} />
       </div>
     );
   }
