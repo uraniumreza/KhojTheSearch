@@ -29,6 +29,7 @@ export default class Cart extends Component {
           Clear Cart
         </button>
         {collectionOfItems}
+        {buttonDisabled && <h4 className="message">You have no item in your cart</h4>}
       </div>
     );
   }
