@@ -8,6 +8,10 @@ export default class SearchBar extends Component {
     this.state = {};
   }
 
+  componentDidUpdate() {
+    document.getElementById('searchBar').value = this.props.searchString;
+  }
+
   onFormSubmit = e => {
     e.preventDefault();
     const searchString = e.target.elements.searchString.value;

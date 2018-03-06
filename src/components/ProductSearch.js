@@ -52,7 +52,10 @@ export default class ProductSearch extends Component {
           <button className="backForward" onClick={() => this.props.loadState('PREVIOUS')}>
             {'<'}
           </button>
-          <SearchBar getSearchString={this.getSearchString} />
+          <SearchBar
+            searchString={this.props.searchString}
+            getSearchString={this.getSearchString}
+          />
           <button className="backForward" onClick={() => this.props.loadState('FORWARD')}>
             {'>'}
           </button>
