@@ -9,6 +9,7 @@
   height: 36px;
   margin: 20px;
   box-shadow: 0 8px 12px 0 rgba(0,0,0,0.1), 0 6px 20px 0 rgba(0,0,0,0.09);
+  cursor: pointer;
 }
 
 .cart {
@@ -99,6 +100,7 @@
   height: 35px;
   box-shadow: 0 8px 12px 0 rgba(0,0,0,0.1), 0 6px 20px 0 rgba(0,0,0,0.09);
   margin-top: 15px;
+  cursor: pointer;
 }
 
 #borderLessButton {
@@ -110,10 +112,16 @@
   top: 40px;
   right: 20px;
   color: blueviolet;
+  cursor: pointer;
 }
 
 #borderLessButton:disabled {
   color: rgba(0, 0, 0, 0.4);
+}
+
+#cartItemTitle {
+  width: 65%;
+  text-align: left;
 }
 
 #image {
@@ -136,9 +144,5 @@
   width: 110px;
   height: 36px;
   box-shadow: 0 8px 12px 0 rgba(0,0,0,0.1), 0 6px 20px 0 rgba(0,0,0,0.09);
-}
-
-#cartItemTitle {
-  width: 65%;
-  text-align: left;
+  cursor: pointer;
 }
