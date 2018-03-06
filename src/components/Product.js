@@ -16,7 +16,7 @@ export default class Product extends Component {
   render() {
     const { product } = this.props;
     return (
-      <div className="Product">
+      <div className="product">
         <img
           id="image"
           src={product.images[0]}
@@ -28,7 +28,7 @@ export default class Product extends Component {
         <button id="button" type="button" onClick={() => this.handleAddCart(product)}>
           + Cart
         </button>
-        <div className="Price">&#2547; {product.price}</div>
+        <div className="price">&#2547; {product.price}</div>
       </div>
     );
   }

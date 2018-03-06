@@ -20,7 +20,7 @@ export default class Cart extends Component {
       <CartItem key={item.id} index={index} item={item} />
     ));
     return (
-      <div className="Cart">
+      <div className="cart">
         <h2>Cart</h2>
         <button
           disabled={buttonDisabled}

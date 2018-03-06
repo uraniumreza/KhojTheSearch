@@ -22,7 +22,7 @@ export default class SearchBar extends Component {
 
   render() {
     return (
-      <form className="SearchBar" onSubmit={this.onFormSubmit}>
+      <form className="searchBar" onSubmit={this.onFormSubmit}>
         <input id="searchBar" type="text" name="searchString" placeholder="Search..." />
         <button id="searchButton">Search</button>
       </form>

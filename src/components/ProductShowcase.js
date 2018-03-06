@@ -30,7 +30,7 @@ export default class ProductShowcase extends Component {
     }
 
     return (
-      <div className="ProductShowcase">
+      <div className="productShowcase">
         {typeof listOfProducts === 'undefined' && (
           <h1 className="message">What&apos;ll you buy today?</h1>
         )}

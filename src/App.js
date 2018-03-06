@@ -105,7 +105,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="app">
         <ProductSearch
           loadState={this.loadState}
           searchString={this.state.searchString}

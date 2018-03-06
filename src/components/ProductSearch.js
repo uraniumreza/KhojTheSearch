@@ -41,13 +41,13 @@ export default class ProductSearch extends Component {
       };
       listOfProducts = [...listOfProducts, product];
     });
-    // console.log(listOfProducts);
+
     this.setState({ searching: false }, this.props.updateListOfProducts(listOfProducts));
   };
 
   render() {
     return (
-      <div className="ProductSearch">
+      <div className="productSearch">
         <div className="header">
           <button className="backForward" onClick={() => this.props.loadState('PREVIOUS')}>
             {'<'}

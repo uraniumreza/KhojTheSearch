@@ -11,7 +11,7 @@ export default class CartItem extends Component {
   render() {
     const { index, item } = this.props;
     return (
-      <div className="CartItem">
+      <div className="cartItem">
         <p>{`${index + 1}.`}</p>
         <p id="cartItemTitle">{`${item.title}`}</p>
         <p>&#2547;{` ${item.price}`}</p>
