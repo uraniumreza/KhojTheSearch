@@ -27,7 +27,12 @@ class App extends Component {
 
   componentDidUpdate = (prevProps, prevState) => {
     const {
-      action, listOfProducts, cartItems, searchString,
+      action,
+      listOfProducts,
+      cartItems,
+      searchString,
+      countOfActions,
+      currentState,
     } = this.state;
     if (action === 'SEARCH' || action === 'ADD_TO_CART' || action === 'CLEAR_CART') {
       const snapshotElement = {
@@ -36,15 +41,21 @@ class App extends Component {
         searchString,
       };
 
-      this.setState(
-        {
+      if (countOfActions !== currentState) {
+        this.setState({
+          countOfActions: this.state.countOfActions + 1,
+          currentState: this.state.currentState + 1,
+          snapshot: [...this.state.snapshot.slice(0, currentState + 1), snapshotElement],
+          action: '',
+        });
+      } else {
+        this.setState({
           countOfActions: this.state.countOfActions + 1,
           currentState: this.state.currentState + 1,
           snapshot: [...this.state.snapshot, snapshotElement],
           action: '',
-        },
-        console.log(this.state.snapshot, this.state.currentState),
-      );
+        });
+      }
     }
     // else {
     //   this.setState({ countOfActions: this.state.currentState });
