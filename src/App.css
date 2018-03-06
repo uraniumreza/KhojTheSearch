@@ -131,7 +131,7 @@
   max-width: 220px;
   max-height: 220px;
   align-content: left;
-  background-color: rgba(0, 0, 0, 0.03);
+  background-color: rgba(0, 0, 0, 0);
 }
 
 #searchBar {
@@ -148,7 +148,7 @@
 }
 
 #title {
-  height: 50px;
+  height: 55px;
   overflow: hidden;
   text-overflow: ellipsis;
 }

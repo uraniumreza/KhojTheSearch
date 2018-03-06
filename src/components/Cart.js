@@ -39,7 +39,7 @@ export default class Cart extends Component {
 }
 
 Cart.propTypes = {
-  cartItems: PropTypes.array,
+  cartItems: PropTypes.arrayOf(PropTypes.object),
   clearCart: PropTypes.func.isRequired,
 };
 
