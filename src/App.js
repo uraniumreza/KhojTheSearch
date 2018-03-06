@@ -9,6 +9,7 @@ class App extends Component {
     super(props);
 
     this.state = {
+      action: '',
       countOfActions: 0,
       currentState: 0,
       cartItems: [],
@@ -24,17 +25,11 @@ class App extends Component {
     };
   }
 
-  componentWillMount() {
-    console.log(...this.state.snapshot);
-  }
-
   componentDidUpdate = (prevProps, prevState) => {
-    if (
-      prevState.countOfActions === this.state.countOfActions &&
-      prevState.searchString === this.state.searchString &&
-      this.state.countOfActions === this.state.currentState
-    ) {
-      const { listOfProducts, cartItems, searchString } = this.state;
+    const {
+      action, listOfProducts, cartItems, searchString,
+    } = this.state;
+    if (action === 'SEARCH' || action === 'ADD_TO_CART' || action === 'CLEAR_CART') {
       const snapshotElement = {
         listOfProducts,
         cartItems,
@@ -46,12 +41,14 @@ class App extends Component {
           countOfActions: this.state.countOfActions + 1,
           currentState: this.state.currentState + 1,
           snapshot: [...this.state.snapshot, snapshotElement],
+          action: '',
         },
-        console.log(this.state.snapshot),
+        console.log(this.state.snapshot, this.state.currentState),
       );
-    } else if (Math.abs(this.state.countOfActions - this.state.currentState) === 1) {
-      this.setState({ countOfActions: this.state.currentState });
     }
+    // else {
+    //   this.setState({ countOfActions: this.state.currentState });
+    // }
   };
 
   loadState = action => {
@@ -60,12 +57,15 @@ class App extends Component {
 
     if (action === 'FORWARD' && snapshot.length > currentState + 1) {
       loadingState += 1;
+      console.log('FOR', snapshot.length, loadingState);
     }
     if (action === 'PREVIOUS' && currentState > 0) {
       loadingState -= 1;
+      console.log('BAC');
     }
 
     if (loadingState !== currentState) {
+      console.log(loadingState);
       this.setState({
         cartItems: snapshot[loadingState].cartItems || [],
         searchString: snapshot[loadingState].searchString || '',
@@ -76,7 +76,7 @@ class App extends Component {
   };
 
   updateListOfProducts = products => {
-    this.setState({ listOfProducts: products });
+    this.setState({ listOfProducts: products, action: 'SEARCH' });
   };
 
   updateSearchString = searchString => {
@@ -84,12 +84,12 @@ class App extends Component {
   };
 
   addToCart = item => {
-    this.setState({ cartItems: [...this.state.cartItems, item] });
+    this.setState({ cartItems: [...this.state.cartItems, item], action: 'ADD_TO_CART' });
   };
 
   clearCart = () => {
     // console.log('Clear Cart Pressed!');
-    this.setState({ cartItems: [] });
+    this.setState({ cartItems: [], action: 'CLEAR_CART' });
   };
 
   render() {
