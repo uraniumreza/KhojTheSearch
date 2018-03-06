@@ -24,7 +24,7 @@ export default class CartItem extends Component {
 
 CartItem.propTypes = {
   index: PropTypes.number,
-  item: PropTypes.object,
+  item: PropTypes.shape,
 };
 
 CartItem.defaultProps = {

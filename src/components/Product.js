@@ -25,7 +25,7 @@ export default class Product extends Component {
           height="220"
           width="220"
         />
-        {product.title}
+        <p id="title">{product.title}</p>
         <button id="button" type="button" onClick={() => this.handleAddCart(product)}>
           + Cart
         </button>
@@ -37,7 +37,7 @@ export default class Product extends Component {
 
 Product.propTypes = {
   addToCart: PropTypes.func.isRequired,
-  product: PropTypes.object,
+  product: PropTypes.shape,
 };
 
 Product.defaultProps = {
