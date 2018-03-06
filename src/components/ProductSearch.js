@@ -10,29 +10,27 @@ export default class ProductSearch extends Component {
 
     this.state = {
       searching: undefined,
-      searchString: undefined,
-      listOfProducts: undefined,
     };
   }
 
   getSearchString = value => {
-    console.log('This is the search string: ', value);
-    this.setState({ searchString: value, searching: true }, this.searchProduct);
+    // console.log('This is the search string: ', value);
+    this.props.updateSearchString(value);
+    this.setState({ searching: true }, this.searchProduct(value));
   };
 
-  searchProduct = () => {
-    fetch(
-      `http://es.backpackbang.com:9200/products/amazon/_search?q=title:${this.state.searchString}`,
-    )
+  searchProduct = searchString => {
+    fetch(`http://es.backpackbang.com:9200/products/amazon/_search?q=title:${searchString}`)
       .then(response => response.json())
       .then(myJson => {
-        console.log(myJson);
+        // console.log(myJson);
         this.refactorProducts(myJson.hits.hits);
       });
   };
 
   refactorProducts = searchedProducts => {
-    const listOfProducts = [];
+    let listOfProducts = [];
+    // eslint-disable-next-line
     searchedProducts.map(item => {
       const product = {
         id: item._id,
@@ -41,19 +39,27 @@ export default class ProductSearch extends Component {
         images: item._source.images,
         price: item._source.salePrice,
       };
-      listOfProducts.push(product);
+      listOfProducts = [...listOfProducts, product];
     });
-    console.log(listOfProducts);
-    this.setState({ listOfProducts, searching: false });
+    // console.log(listOfProducts);
+    this.setState({ searching: false }, this.props.updateListOfProducts(listOfProducts));
   };
 
   render() {
     return (
       <div className="ProductSearch">
-        <SearchBar getSearchString={this.getSearchString} />
+        <div className="header">
+          <button className="backForward" onClick={this.props.loadPreviousState}>
+            {'<'}
+          </button>
+          <SearchBar getSearchString={this.getSearchString} />
+          <button className="backForward" onClick={this.props.loadForwardState}>
+            {'>'}
+          </button>
+        </div>
         <ProductShowcase
           searching={this.state.searching}
-          listOfProducts={this.state.listOfProducts}
+          listOfProducts={this.props.listOfProducts}
           addToCart={this.props.addToCart}
         />
       </div>

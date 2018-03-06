@@ -16,7 +16,9 @@ export default class Cart extends Component {
     if (cartItems.length > 0) buttonDisabled = false;
     else buttonDisabled = true;
     let collectionOfItems = [];
-    collectionOfItems = cartItems.map((item, index) => <CartItem index={index} item={item} />);
+    collectionOfItems = cartItems.map((item, index) => (
+      <CartItem key={item.id} index={index} item={item} />
+    ));
     return (
       <div className="Cart">
         <h2>Cart</h2>

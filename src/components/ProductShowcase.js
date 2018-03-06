@@ -13,7 +13,7 @@ export default class ProductShowcase extends Component {
 
   render() {
     let collectionOfProducts = [];
-    console.log('listOfProducts - ', this.props.listOfProducts);
+    // console.log('listOfProducts - ', this.props.listOfProducts);
     const { listOfProducts } = this.props;
     if (listOfProducts) {
       collectionOfProducts = listOfProducts.map(item => (

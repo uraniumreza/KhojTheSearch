@@ -13,7 +13,6 @@ export default class SearchBar extends Component {
     const searchString = e.target.elements.searchString.value;
     if (searchString) {
       this.props.getSearchString(searchString);
-      e.target.elements.searchString.value = '';
     }
   };
 

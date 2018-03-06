@@ -10,7 +10,7 @@ export default class Product extends Component {
 
   handleAddCart = product => {
     this.props.addToCart(product);
-    console.log('+ Cart Clicked!', product);
+    // console.log('+ Cart Clicked!', product);
   };
 
   render() {
