@@ -54,19 +54,26 @@ class App extends Component {
     }
   };
 
-  loadPreviousState = () => {
-    console.log('LOAD PREVIOUS STATE', this.state.currentState - 1);
-    const { snapshot } = this.state;
-    const loadingState = this.state.currentState - 1;
-    this.setState({
-      cartItems: snapshot[loadingState].cartItems,
-      searchString: snapshot[loadingState].searchString,
-      listOfProducts: snapshot[loadingState].listOfProducts,
-      currentState: loadingState,
-    });
-  };
+  loadState = action => {
+    const { snapshot, currentState } = this.state;
+    let loadingState = currentState;
 
-  loadForwardState = () => {};
+    if (action === 'FORWARD' && snapshot.length > currentState + 1) {
+      loadingState += 1;
+    }
+    if (action === 'PREVIOUS' && currentState > 0) {
+      loadingState -= 1;
+    }
+
+    if (loadingState !== currentState) {
+      this.setState({
+        cartItems: snapshot[loadingState].cartItems || [],
+        searchString: snapshot[loadingState].searchString || '',
+        listOfProducts: snapshot[loadingState].listOfProducts || undefined,
+        currentState: loadingState,
+      });
+    }
+  };
 
   updateListOfProducts = products => {
     this.setState({ listOfProducts: products });
@@ -77,10 +84,7 @@ class App extends Component {
   };
 
   addToCart = item => {
-    const { cartItems } = this.state;
-    cartItems.push(item);
-    this.setState({ cartItems });
-    // console.log(cartItems);
+    this.setState({ cartItems: [...this.state.cartItems, item] });
   };
 
   clearCart = () => {
@@ -92,7 +96,7 @@ class App extends Component {
     return (
       <div className="App">
         <ProductSearch
-          loadPreviousState={this.loadPreviousState}
+          loadState={this.loadState}
           searchString={this.state.searchString}
           updateSearchString={this.updateSearchString}
           listOfProducts={this.state.listOfProducts}

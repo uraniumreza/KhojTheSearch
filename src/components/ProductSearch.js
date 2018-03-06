@@ -49,11 +49,11 @@ export default class ProductSearch extends Component {
     return (
       <div className="ProductSearch">
         <div className="header">
-          <button className="backForward" onClick={this.props.loadPreviousState}>
+          <button className="backForward" onClick={() => this.props.loadState('PREVIOUS')}>
             {'<'}
           </button>
           <SearchBar getSearchString={this.getSearchString} />
-          <button className="backForward" onClick={this.props.loadForwardState}>
+          <button className="backForward" onClick={() => this.props.loadState('FORWARD')}>
             {'>'}
           </button>
         </div>
