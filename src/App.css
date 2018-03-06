@@ -60,7 +60,7 @@
 
 .productShowcase {
   display: flex;
-  height: 83%;
+  height: 82%;
   flex-wrap: wrap;
   overflow: auto;
   justify-content: flex-start;
@@ -123,7 +123,7 @@
   max-width: 220px;
   max-height: 220px;
   align-content: left;
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: rgba(0, 0, 0, 0.03);
 }
 
 #searchBar {

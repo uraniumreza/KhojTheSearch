@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import '../App.css';
 
 export default class CartItem extends Component {
@@ -19,3 +21,13 @@ export default class CartItem extends Component {
     );
   }
 }
+
+CartItem.propTypes = {
+  index: PropTypes.number,
+  item: PropTypes.object,
+};
+
+CartItem.defaultProps = {
+  index: 0,
+  item: [],
+};

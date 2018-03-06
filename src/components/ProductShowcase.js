@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { ClipLoader } from 'react-spinners';
 import Product from './Product';
@@ -13,7 +14,6 @@ export default class ProductShowcase extends Component {
 
   render() {
     let collectionOfProducts = [];
-    // console.log('listOfProducts - ', this.props.listOfProducts);
     const { listOfProducts } = this.props;
     if (listOfProducts) {
       collectionOfProducts = listOfProducts.map(item => (
@@ -23,7 +23,7 @@ export default class ProductShowcase extends Component {
 
     if (this.props.searching) {
       return (
-        <div className="Loading">
+        <div className="loading">
           <ClipLoader size={100} color="#BBB" loading />
         </div>
       );
@@ -45,3 +45,14 @@ export default class ProductShowcase extends Component {
     );
   }
 }
+
+ProductShowcase.propTypes = {
+  searching: PropTypes.bool,
+  listOfProducts: PropTypes.array,
+  addToCart: PropTypes.func.isRequired,
+};
+
+ProductShowcase.defaultProps = {
+  searching: false,
+  listOfProducts: [],
+};

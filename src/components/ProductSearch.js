@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import ProductShowcase from './ProductShowcase';
 import SearchBar from './SearchBar';
@@ -14,7 +15,6 @@ export default class ProductSearch extends Component {
   }
 
   getSearchString = value => {
-    // console.log('This is the search string: ', value);
     this.props.updateSearchString(value);
     this.setState({ searching: true }, this.searchProduct(value));
   };
@@ -23,7 +23,6 @@ export default class ProductSearch extends Component {
     fetch(`http://es.backpackbang.com:9200/products/amazon/_search?q=title:${searchString}`)
       .then(response => response.json())
       .then(myJson => {
-        // console.log(myJson);
         this.refactorProducts(myJson.hits.hits);
       });
   };
@@ -69,3 +68,17 @@ export default class ProductSearch extends Component {
     );
   }
 }
+
+ProductSearch.propTypes = {
+  addToCart: PropTypes.func.isRequired,
+  loadState: PropTypes.func.isRequired,
+  updateSearchString: PropTypes.func.isRequired,
+  updateListOfProducts: PropTypes.func.isRequired,
+  listOfProducts: PropTypes.array,
+  searchString: PropTypes.string,
+};
+
+ProductSearch.defaultProps = {
+  listOfProducts: [],
+  searchString: undefined,
+};

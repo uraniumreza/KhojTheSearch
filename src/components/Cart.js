@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import CartItem from './CartItem';
 import '../App.css';
@@ -36,3 +37,12 @@ export default class Cart extends Component {
     );
   }
 }
+
+Cart.propTypes = {
+  cartItems: PropTypes.array,
+  clearCart: PropTypes.func.isRequired,
+};
+
+Cart.defaultProps = {
+  cartItems: [],
+};

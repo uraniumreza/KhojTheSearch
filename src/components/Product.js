@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import '../App.css';
 
 export default class Product extends Component {
@@ -10,7 +12,6 @@ export default class Product extends Component {
 
   handleAddCart = product => {
     this.props.addToCart(product);
-    // console.log('+ Cart Clicked!', product);
   };
 
   render() {
@@ -33,3 +34,12 @@ export default class Product extends Component {
     );
   }
 }
+
+Product.propTypes = {
+  addToCart: PropTypes.func.isRequired,
+  product: PropTypes.object,
+};
+
+Product.defaultProps = {
+  product: {},
+};

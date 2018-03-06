@@ -25,7 +25,7 @@ class App extends Component {
     };
   }
 
-  componentDidUpdate = (prevProps, prevState) => {
+  componentDidUpdate = () => {
     const {
       action,
       listOfProducts,
@@ -66,23 +66,18 @@ class App extends Component {
 
     if (action === 'FORWARD' && snapshot.length > currentState + 1) {
       loadingState += 1;
-      console.log('FOR', snapshot.length, loadingState);
     }
     if (action === 'PREVIOUS' && currentState > 0) {
       loadingState -= 1;
-      console.log('BAC');
     }
 
     if (loadingState !== currentState) {
-      this.setState(
-        {
-          cartItems: snapshot[loadingState].cartItems || [],
-          searchString: snapshot[loadingState].searchString || '',
-          listOfProducts: snapshot[loadingState].listOfProducts || undefined,
-          currentState: loadingState,
-        },
-        console.log(this.state),
-      );
+      this.setState({
+        cartItems: snapshot[loadingState].cartItems || [],
+        searchString: snapshot[loadingState].searchString || '',
+        listOfProducts: snapshot[loadingState].listOfProducts || undefined,
+        currentState: loadingState,
+      });
     }
   };
 
@@ -99,7 +94,6 @@ class App extends Component {
   };
 
   clearCart = () => {
-    // console.log('Clear Cart Pressed!');
     this.setState({ cartItems: [], action: 'CLEAR_CART' });
   };
 
