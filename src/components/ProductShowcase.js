@@ -48,7 +48,7 @@ export default class ProductShowcase extends Component {
 
 ProductShowcase.propTypes = {
   searching: PropTypes.bool,
-  listOfProducts: PropTypes.arrayof(PropTypes.object),
+  listOfProducts: PropTypes.arrayOf(PropTypes.object),
   addToCart: PropTypes.func.isRequired,
 };
 
