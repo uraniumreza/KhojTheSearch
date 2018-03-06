@@ -48,11 +48,11 @@ export default class ProductShowcase extends Component {
 
 ProductShowcase.propTypes = {
   searching: PropTypes.bool,
-  listOfProducts: PropTypes.array,
+  listOfProducts: PropTypes.arrayof(PropTypes.object),
   addToCart: PropTypes.func.isRequired,
 };
 
 ProductShowcase.defaultProps = {
   searching: false,
-  listOfProducts: [],
+  listOfProducts: undefined,
 };

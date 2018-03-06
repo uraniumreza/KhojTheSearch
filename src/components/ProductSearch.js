@@ -29,6 +29,7 @@ export default class ProductSearch extends Component {
 
   refactorProducts = searchedProducts => {
     let listOfProducts = [];
+
     // eslint-disable-next-line
     searchedProducts.map(item => {
       const product = {
@@ -74,11 +75,11 @@ ProductSearch.propTypes = {
   loadState: PropTypes.func.isRequired,
   updateSearchString: PropTypes.func.isRequired,
   updateListOfProducts: PropTypes.func.isRequired,
-  listOfProducts: PropTypes.array,
+  listOfProducts: PropTypes.arrayOf(PropTypes.object),
   searchString: PropTypes.string,
 };
 
 ProductSearch.defaultProps = {
-  listOfProducts: [],
+  listOfProducts: undefined,
   searchString: undefined,
 };
